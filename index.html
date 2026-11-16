@@ -3,12 +3,491 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>REDC | Creative &amp; Multimedia Portfolio</title>
+<title>REDC | Creative & Multimedia Portfolio</title>
+<style>
+#redc{font-family:Arial,Helvetica,sans-serif;color:#fff;max-width:1100px;margin:auto;--green:#68ad99;--dark:#696d6b;--card:#87938d;--head:#596a64;--cream:#c9c5ad;--ink:#243a34}
+#redc *{box-sizing:border-box}
+#redc .intro{background:var(--green);color:var(--ink);padding:100px 8%;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+#redc .logo{font-size:clamp(65px,10vw,100px);letter-spacing:-5px;line-height:1}
+#redc .intro p{font-size:12px;line-height:1.6;max-width:400px}
+#redc .stats{background:var(--dark);display:flex;justify-content:center;gap:12%;text-align:center;padding:45px 5%;margin:8px 0}
+#redc .stat strong{display:block;font-size:34px;font-weight:400}
+#redc .stat span{font-size:11px;line-height:1.4}
+#redc .timeline{background:var(--dark);padding:55px 5%;margin:0 8px}
+#redc .label{background:var(--cream);color:#424743;text-align:center;padding:9px 15px;font-size:12px;width:max-content;max-width:100%;margin:0 auto 35px}
+#redc .roles{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+#redc .role{background:var(--card);border-radius:10px;overflow:hidden;text-align:center}
+#redc .role h3{font-size:12px;background:var(--head);padding:15px 8px;margin:0}
+#redc .role p{font-size:11px;line-height:1.5;padding:12px}
+#redc .work-intro{background:#fff;color:#3e4843;padding:65px 9%;display:grid;grid-template-columns:1fr 1.3fr;gap:35px}
+#redc .work-intro h2{font-size:34px;font-weight:400;line-height:1.1;margin:0}
+#redc .work-intro p{font-size:13px;line-height:1.7;color:#555f59;margin:0}
+#redc .case{background:var(--dark);padding:55px 5%;margin:8px}
+#redc .case-header{text-align:center;max-width:700px;margin:0 auto 35px}
+#redc .eyebrow{font-size:10px;letter-spacing:2px;color:var(--cream);text-transform:uppercase}
+#redc .case-header h2{font-size:34px;font-weight:400;margin:12px 0}
+#redc .case-header p{font-size:12px;line-height:1.6;color:#eee}
+#redc .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+#redc .card{background:var(--card);border-radius:10px;overflow:hidden}
+#redc .card-body{padding:18px}
+#redc .card h3{font-size:13px;margin:0 0 8px}
+#redc .card p{font-size:11px;line-height:1.6;margin:0}
+#redc .visual{min-height:180px;background:#74837b;border:1px dashed #ddd;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;font-size:11px;color:white}
+#redc .section{margin-top:40px}
+#redc .section-title{font-size:18px;font-weight:400;border-bottom:1px solid #aaa;padding-bottom:12px;margin-bottom:16px}
+#redc .strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+#redc .strip .visual{min-height:110px}
+#redc .guides{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+#redc .guide{background:var(--card);border-radius:8px;overflow:hidden}
+#redc .guide p{font-size:11px;padding:0 12px 12px}
+#redc details{background:var(--card);border-radius:9px;margin-bottom:12px;overflow:hidden}
+#redc summary{cursor:pointer;padding:17px 20px;font-size:13px;list-style:none;background:var(--head);font-weight:600}
+#redc summary::-webkit-details-marker{display:none}
+#redc summary:after{content:"+";float:right;color:var(--cream);font-size:18px}
+#redc details[open]>summary:after{content:"−"}
+#redc .footnote{font-size:10px;line-height:1.5;color:#eee;margin-top:12px}
+#redc .note{background:var(--cream);color:#424743;padding:25px 7%;margin-top:20px}
+#redc .note p{font-size:11px;line-height:1.6;margin:6px 0 0}
+#redc .framework-intro{max-width:900px;margin:0 0 24px}
+#redc .framework-intro p{font-size:11px;line-height:1.7;color:#f0f1ef;margin:8px 0}
+#redc .framework-intro .framework-lead{font-size:16px;line-height:1.45;color:#fff}
+#redc .slides{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+#redc .framework-card{display:block;background:var(--card);border-radius:8px;overflow:hidden;color:#fff;border:1px solid rgba(255,255,255,.13)}
+#redc .framework-preview{width:100%;aspect-ratio:16/9;background:#e8e8e8;overflow:hidden}
+#redc .framework-preview iframe{width:100%;height:100%;border:0;pointer-events:none}
+#redc .framework-copy{padding:14px;min-height:0;text-align:center}
+#redc .framework-link{display:inline-block;margin-top:0;color:var(--cream);font-size:9px;font-weight:bold;text-decoration:none}
+#redc .framework-link:hover{text-decoration:underline}
+#redc .selected-content{padding:18px}
+#redc .selected-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(245px,.92fr);gap:18px;align-items:start}
+#redc .selected-main{min-width:0}
+#redc .selected-description{font-size:11px;line-height:1.65;margin:0 0 14px}
+#redc .selected-description b,#redc .selected-label{display:block;color:var(--cream);font-size:9px;letter-spacing:1px;text-transform:uppercase;margin-bottom:7px}
+#redc .selected-colour{background:var(--head);border-radius:6px;padding:12px;margin:0 0 14px;font-size:10px;line-height:1.55}
+#redc .selected-placeholder{display:flex;align-items:center;justify-content:center;text-align:center;background:#74837b;border:1px dashed rgba(255,255,255,.75);border-radius:6px;color:#fff;padding:14px;font-size:10px;line-height:1.45;overflow:hidden}
+#redc .selected-banner{display:block;width:100%;height:auto;min-height:0;padding:0;margin:8px 0 14px;background:transparent;border:0}
+#redc .selected-banner img{display:block;width:100%;height:auto;object-fit:contain}
+#redc .selected-hero-video{width:100%;aspect-ratio:16/9;min-height:0;padding:0;margin:8px 0 14px}
+#redc .selected-hero-video iframe{width:100%;height:100%;border:0}
+#redc .selected-assets{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+#redc .selected-brochure{width:100%;aspect-ratio:.707/1;padding:0;overflow:hidden;background:#f4f1e8}
+#redc .selected-brochure iframe{width:100%;height:100%;border:0}
+#redc .selected-gif{width:100%;aspect-ratio:.707/1;min-height:0}
+#redc .selected-testimonials{background:var(--head);padding:14px;border-radius:7px;min-width:0}
+#redc .selected-testimonials h4{text-align:center;font-size:12px;margin:0 0 12px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.25)}
+#redc .selected-video-list{display:grid;grid-template-columns:1fr;gap:12px}
+#redc .selected-video{width:100%;aspect-ratio:16/9;min-height:0;padding:0}
+#redc .selected-video iframe{width:100%;height:100%;border:0}
+#redc .selected-note{font-size:9px;line-height:1.5;margin:12px 0 0}
+#redc .creative-showcase{background:var(--dark);padding:35px 5%;margin:8px;border-top:1px solid rgba(255,255,255,.35)}
+#redc .creative-level-title{font-size:25px;font-weight:400;margin:0 0 22px;padding-bottom:16px;border-bottom:1px solid var(--cream)}
+#redc .creative-intro{max-width:760px;margin:0 0 25px}
+#redc .creative-intro p{font-size:11px;line-height:1.7;color:#f0f1ef}
+#redc .creative-dropdown{background:var(--card);border-radius:8px;overflow:hidden;margin-top:18px}
+#redc .creative-dropdown summary{background:var(--head);padding:20px;font-size:13px;font-weight:600;cursor:pointer;list-style:none}
+#redc .creative-dropdown summary::-webkit-details-marker{display:none}
+#redc .creative-dropdown summary:after{content:"+";float:right;font-size:20px;color:var(--cream)}
+#redc .creative-dropdown[open] summary:after{content:"−"}
+#redc .creative-dropdown-content{padding:20px}
+#redc .creative-work{padding:27px 0;border-bottom:1px solid rgba(255,255,255,.22)}
+#redc .creative-work:last-child{border-bottom:0}
+#redc .creative-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,.95fr);gap:24px;align-items:center}
+#redc .creative-copy{font-size:11px;line-height:1.7;color:#fff}
+#redc .creative-copy p{margin:0 0 9px}
+#redc .creative-heading{font-size:18px;font-weight:500;margin:0 0 12px;color:#fff}
+#redc .creative-copy b{color:var(--cream)}
+#redc .slideshow{position:relative;width:100%;aspect-ratio:5/4;background:#53645e;border:1px dashed rgba(255,255,255,.6);border-radius:7px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+#redc .slideshow.portrait{aspect-ratio:1/1;width:100%;max-width:420px;margin-left:auto;margin-right:auto}
+#redc .slideshow img{display:block;width:100%;height:100%;object-fit:contain;background:#273a34}
+#redc .slide-empty{font-size:11px;line-height:1.6;text-align:center;padding:25px;color:#fff}
+#redc .slide-controls{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:center;padding:9px;background:linear-gradient(transparent,rgba(0,0,0,.8))}
+#redc .slide-controls button{border:1px solid rgba(255,255,255,.65);background:rgba(20,35,30,.8);color:white;border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:19px}
+#redc .slide-controls button:disabled{opacity:.35;cursor:not-allowed}
+#redc .slide-count{font-size:10px;color:white}
+#redc .slide-play{position:absolute;right:52px;bottom:13px;border:1px solid rgba(255,255,255,.6);background:rgba(20,35,30,.8);color:#fff;padding:7px 10px;border-radius:20px;font-size:9px;cursor:pointer}
+#redc .slide-play:disabled{opacity:.5;cursor:not-allowed}
+#redc .slide-dots{position:absolute;top:10px;left:0;right:0;display:flex;justify-content:center;gap:6px;flex-wrap:wrap;padding:0 12px}
+#redc .slide-dots button{width:7px;height:7px;border:0;border-radius:50%;background:rgba(255,255,255,.55);padding:0;cursor:pointer}
+#redc .slide-dots button.active{background:#fff}
+#redc .broll-frame{width:100%;aspect-ratio:16/9;background:#273a34;border:1px dashed rgba(255,255,255,.6);border-radius:7px;overflow:hidden}
+#redc .broll-frame iframe{width:100%;height:100%;border:0;display:block}
+#redc .broll-placeholder{height:100%;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;font-size:11px;line-height:1.6;color:#fff}
+#redc .impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+#redc .impact-card{background:var(--card);padding:18px;border-radius:8px}
+#redc .impact-card strong{font-size:27px;font-weight:400;display:block;margin-bottom:8px}
+#redc .impact-card b{font-size:11px}
+#redc .impact-card p{font-size:10px;line-height:1.5}
+@media(max-width:760px){
+#redc .intro{grid-template-columns:1fr;padding:65px 8%}
+#redc .work-intro{grid-template-columns:1fr;padding:45px 8%;gap:18px}
+#redc .selected-layout{grid-template-columns:1fr}
+#redc .selected-testimonials{margin-top:4px}
+#redc .creative-row{grid-template-columns:1fr}
+#redc .slideshow.portrait{max-width:420px}
+#redc .slides{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+#redc .roles{grid-template-columns:1fr}
+#redc .stats{gap:8%;padding:35px 4%}
+#redc .stat strong{font-size:27px}
+#redc .grid{grid-template-columns:1fr}
+#redc .guides{grid-template-columns:repeat(2,1fr)}
+#redc .slides{grid-template-columns:1fr}
+#redc .selected-assets{grid-template-columns:1fr 1fr}
+#redc .impact-grid{grid-template-columns:1fr}
+#redc .creative-showcase{padding:30px 4%}
+#redc .creative-dropdown-content{padding:14px}
+}
+</style>
 </head>
 <body>
 <div id="redc">
-<h1>REDC</h1>
-<p>Portfolio source file is available in the uploaded attachment; the complete HTML will be committed in a subsequent update.</p>
+
+<section class="intro">
+<div class="logo">REDC</div>
+<p>A pioneer in executive education in Pakistan. Established in 1989, the Rausing Executive Development Centre (REDC) at LUMS bridges academic expertise and industry practice through executive education and organisational learning.</p>
+</section>
+
+<section class="stats">
+<div class="stat"><strong>26,000+</strong><span>Programme participants<br>since inception</span></div>
+<div class="stat"><strong>100+</strong><span>Open-enrolment and customised<br>programmes annually</span></div>
+</section>
+
+<section class="timeline">
+<div class="label">MY PROFESSIONAL SCOPE &amp; PROGRESSION</div>
+<div class="roles">
+<article class="role"><h3>Research Associate · Intern</h3><p>Educational research, knowledge translation and audience-centred learning.<br><br>17 June – 16 August 2024</p></article>
+<article class="role"><h3>Multimedia Content Associate</h3><p>Visual storytelling, institutional communication and industry-informed learning.<br><br>September 2024 – promotion</p></article>
+<article class="role"><h3>Multimedia Content Specialist</h3><p>Strategic communication, creative systems and AI-assisted innovation.<br><br>Current</p></article>
 </div>
+</section>
+
+<section class="work-intro">
+<h2>From communication objectives to creative outcomes.</h2>
+<p>This portfolio examines selected work across multimedia production, institutional communication, visual storytelling and creative development. Each case study documents the context, decisions, individual contribution and available evidence.</p>
+</section>
+
+<section class="case">
+<header class="case-header">
+<div class="eyebrow">Selected case study · REDC / LUMS</div>
+<h2>Multimedia communication, built as a system.</h2>
+<p>A focused record of the participant-storytelling model, programme identities, creative standards and production improvements.</p>
+</header>
+
+<div class="grid">
+<article class="card">
+<div class="visual">INSERT TESTIMONIAL VIDEO / CAMPAIGN IMAGE</div>
+<div class="card-body"><div class="eyebrow">01 / Communication model</div><h3>From institution-led promotion to participant voice.</h3><p>Built a recurring video-testimonial approach and managed it end to end: participant outreach, interview questions, direction, filming, editing and use in programme marketing.</p></div>
+</article>
+<article class="card">
+<div class="visual">INSERT PROGRAMME IDENTITY EXAMPLES</div>
+<div class="card-body"><div class="eyebrow">02 / Programme positioning</div><h3>Distinct programme personalities. One institutional identity.</h3><p>Developed differentiated tones and colour treatments so each programme could communicate its own audience, value and character while retaining its connection to REDC.</p></div>
+</article>
+</div>
+
+<div class="section">
+<h3 class="section-title">Selected work</h3>
+<div class="strip">
+<div class="visual">Programme campaign visual</div>
+<div class="visual">Participant story / still</div>
+<div class="visual">Flagship programme photography</div>
+</div>
+</div>
+
+<div class="section">
+<h3 class="section-title">Creative standards · Guideline library</h3>
+<div class="guides">
+<article class="guide">
+<div class="visual" style="padding:0;min-height:180px;border:0"><iframe src="https://drive.google.com/file/d/1IKyXPuJLLlMD5Cd_iTJ4NR5IxLUdiQUT/preview" title="Brand and visual identity guideline PDF" style="width:100%;height:180px;border:0" loading="lazy" allow="autoplay"></iframe></div>
+<p><b>Brand &amp; visual identity</b><br>Logo, colour, typography, graphic language and templates.</p>
+</article>
+<article class="guide"><div class="visual">GUIDELINE COVER</div><p><b>Photography direction</b><br>Subjects, perspectives, composition and image treatment.</p></article>
+<article class="guide"><div class="visual">GUIDELINE COVER</div><p><b>Videography</b><br>Interview approach, filming and visual storytelling.</p></article>
+<article class="guide"><div class="visual">GUIDELINE COVER</div><p><b>Editing &amp; motion</b><br>Pacing, titles, transitions, graphics and delivery.</p></article>
+</div>
+</div>
+
+<!-- STRATEGIC FRAMEWORK -->
+<div class="section">
+<h3 class="section-title">REDC strategic framework · Six presentations</h3>
+<div class="framework-intro">
+<p class="framework-lead">A shared strategic reference for understanding REDC, defining its direction and aligning how the institution presents and delivers its value.</p>
+<p>The six presentations move from institutional foundations to brand understanding, communication, governance, strategy and future direction. Together, they provide leadership and teams with a common view of what REDC stands for, whom it serves, how it should communicate and what must guide its next stage.</p>
+<p><strong>Why this matters:</strong> A clearer vision, mission and positioning give teams a consistent basis for decisions. Shared messages reduce fragmentation across programmes and channels. Defined principles and governance clarify responsibilities, while the future-direction work creates a basis for coordinated priorities, stronger collaboration and measurable execution.</p>
+</div>
+
+<div class="slides">
+<article class="framework-card">
+<div class="framework-preview"><iframe src="https://drive.google.com/file/d/1pWASBT40p6IifvVPuqoFBZkVXxkDhg-t/preview" title="Presentation 1" loading="lazy"></iframe></div>
+<div class="framework-copy"><a class="framework-link" href="https://drive.google.com/file/d/1pWASBT40p6IifvVPuqoFBZkVXxkDhg-t/view?usp=sharing" target="_blank" rel="noopener noreferrer">OPEN PRESENTATION ↗</a></div>
+</article>
+<article class="framework-card">
+<div class="framework-preview"><iframe src="https://drive.google.com/file/d/1Y02LoWWAYMjgqYynvtxK_FzD3st93gfd/preview" title="Presentation 2" loading="lazy"></iframe></div>
+<div class="framework-copy"><a class="framework-link" href="https://drive.google.com/file/d/1Y02LoWWAYMjgqYynvtxK_FzD3st93gfd/view?usp=sharing" target="_blank" rel="noopener noreferrer">OPEN PRESENTATION ↗</a></div>
+</article>
+<article class="framework-card">
+<div class="framework-preview"><iframe src="https://drive.google.com/file/d/1XknrdezBnfCgBQFKv8B6YAOjI7wWKZ7i/preview" title="Presentation 3" loading="lazy"></iframe></div>
+<div class="framework-copy"><a class="framework-link" href="https://drive.google.com/file/d/1XknrdezBnfCgBQFKv8B6YAOjI7wWKZ7i/view?usp=sharing" target="_blank" rel="noopener noreferrer">OPEN PRESENTATION ↗</a></div>
+</article>
+<article class="framework-card">
+<div class="framework-preview"><iframe src="https://drive.google.com/file/d/1GEizgTsg2BHfNRd7FerQvVX3iq54LbdS/preview" title="Presentation 4" loading="lazy"></iframe></div>
+<div class="framework-copy"><a class="framework-link" href="https://drive.google.com/file/d/1GEizgTsg2BHfNRd7FerQvVX3iq54LbdS/view?usp=sharing" target="_blank" rel="noopener noreferrer">OPEN PRESENTATION ↗</a></div>
+</article>
+<article class="framework-card">
+<div class="framework-preview"><iframe src="https://drive.google.com/file/d/19GASfQm_C3fgHPlHKRF9gXU4JMKvclTK/preview" title="Presentation 5" loading="lazy"></iframe></div>
+<div class="framework-copy"><a class="framework-link" href="https://drive.google.com/file/d/19GASfQm_C3fgHPlHKRF9gXU4JMKvclTK/view?usp=sharing" target="_blank" rel="noopener noreferrer">OPEN PRESENTATION ↗</a></div>
+</article>
+<article class="framework-card">
+<div class="framework-preview"><iframe src="https://drive.google.com/file/d/1eAvHW1QDPKILlXWSGwSzfRT6xenFGZUg/preview" title="Presentation 6" loading="lazy"></iframe></div>
+<div class="framework-copy"><a class="framework-link" href="https://drive.google.com/file/d/1eAvHW1QDPKILlXWSGwSzfRT6xenFGZUg/view?usp=sharing" target="_blank" rel="noopener noreferrer">OPEN PRESENTATION ↗</a></div>
+</article>
+</div>
+<p class="footnote">These presentations are intended to support discussion, shared understanding and strategic alignment. Proposed recommendations remain subject to REDC and LUMS leadership review and approval.</p>
+</div>
+
+<div class="section">
+<h3 class="section-title">Selected Work · Programme Campaigns &amp; Content</h3>
+<p class="footnote">Explore selected programme campaigns and creative deliverables. Each programme includes its description, visual direction, campaign materials and participant testimonials.</p>
+
+<details open>
+<summary>01 &nbsp; Authentic Leadership for the Top</summary>
+<div class="selected-content">
+<div class="selected-layout">
+<div class="selected-main">
+<p class="selected-description"><b>Programme description</b>Dummy text for now. Add a concise introduction explaining the programme, its intended audience, learning focus and the value it offers to participants and organisations.</p>
+<div class="selected-colour"><span class="selected-label">Colour &amp; visual rationale</span>Placeholder text: explain why this colour palette was selected, what it communicates about the programme and how the visual identity supports its positioning.</div>
+<span class="selected-label">Email banner</span>
+<div class="selected-banner"><img src="https://drive.google.com/thumbnail?id=11ZozE_zwIvv34OZ0faCxN9t56snmmJbp&amp;sz=w1600" alt="Authentic Leadership for the Top email banner" loading="lazy"></div>
+<span class="selected-label">Hero video</span>
+<div class="selected-hero-video"><iframe src="https://drive.google.com/file/d/1_J3i1XCVl-_c5x89avYnM0wa891dEQNf/preview" title="Authentic Leadership hero video" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
+<div class="selected-assets">
+<div><span class="selected-label">Brochure</span><div class="selected-brochure"><iframe src="https://drive.google.com/file/d/1Ij47xBdAq7Q4k--IquOx1diMZWUHZg8k/preview" title="Authentic Leadership brochure" loading="lazy" allow="autoplay"></iframe></div></div>
+<div><span class="selected-label">GIF / Motion creative</span><div class="selected-placeholder selected-gif">GIF PLACEHOLDER<br>Insert animated GIF or motion creative</div></div>
+</div>
+</div>
+<aside class="selected-testimonials">
+<h4>Video Testimonials</h4>
+<div class="selected-video-list">
+<div class="selected-video"><iframe src="https://www.youtube.com/embed/7uqlBt9QSd0" title="Testimonial 1" loading="lazy" allowfullscreen></iframe></div>
+<div class="selected-video"><iframe src="https://www.youtube.com/embed/1otRtLQcTSI" title="Testimonial 2" loading="lazy" allowfullscreen></iframe></div>
+<div class="selected-video"><iframe src="https://www.youtube.com/embed/1otRtLQcTSI" title="Testimonial 3" loading="lazy" allowfullscreen></iframe></div>
+<div class="selected-video"><iframe src="https://www.youtube.com/embed/uGq8o6IFbPs" title="Testimonial 4" loading="lazy" allowfullscreen></iframe></div>
+<div class="selected-video"><iframe src="https://www.youtube.com/embed/ekbTfO0cIQQ" title="Testimonial 5" loading="lazy" allowfullscreen></iframe></div>
+<div class="selected-video"><iframe src="https://www.youtube.com/embed/Gwi5TwzgEZQ" title="Testimonial 6" loading="lazy" allowfullscreen></iframe></div>
+</div>
+<p class="selected-note">Six participant testimonial videos. The second and third entries use the same YouTube link supplied.</p>
+</aside>
+</div>
+</div>
+</details>
+
+<details>
+<summary>02 &nbsp; Directors Training Programme</summary>
+<div class="selected-content">
+<div class="selected-layout">
+<div class="selected-main">
+<p class="selected-description"><b>Programme description</b>Dummy text for now. Add a concise introduction explaining the programme, its intended audience, learning focus and the value it offers to participants and organisations.</p>
+<div class="selected-colour"><span class="selected-label">Colour &amp; visual rationale</span>Placeholder text: explain why this colour palette was selected, what it communicates about the programme and how the visual identity supports its positioning.</div>
+<span class="selected-label">Email banner</span><div class="selected-placeholder selected-banner">EMAIL BANNER PLACEHOLDER</div>
+<span class="selected-label">Hero video</span><div class="selected-placeholder selected-hero-video">HERO VIDEO PLACEHOLDER</div>
+<div class="selected-assets">
+<div><span class="selected-label">Brochure</span><div class="selected-placeholder selected-brochure">BROCHURE PLACEHOLDER</div></div>
+<div><span class="selected-label">GIF / Motion creative</span><div class="selected-placeholder selected-gif">GIF PLACEHOLDER</div></div>
+</div>
+</div>
+<aside class="selected-testimonials">
+<h4>Video Testimonials</h4>
+<div class="selected-video-list">
+<div class="selected-placeholder selected-video">VIDEO TESTIMONIAL 01</div>
+<div class="selected-placeholder selected-video">VIDEO TESTIMONIAL 02</div>
+<div class="selected-placeholder selected-video">VIDEO TESTIMONIAL 03</div>
+<div class="selected-placeholder selected-video">VIDEO TESTIMONIAL 04</div>
+</div>
+<p class="selected-note">Replace each placeholder with a YouTube or Google Drive video embed.</p>
+</aside>
+</div>
+</div>
+</details>
+</div>
+</section>
+
+<section class="creative-showcase">
+<h2 class="creative-level-title">AI · Associate Level</h2>
+<div class="creative-intro"><p>Selected creative production work across photography, AI-generated conceptual content and video production.</p></div>
+<details class="creative-dropdown">
+<summary>Creative Production Showcase</summary>
+<div class="creative-dropdown-content">
+
+<section class="creative-work">
+<div class="creative-row">
+<div class="creative-copy">
+<h3 class="creative-heading">01 · Photography</h3>
+<p><b>Photography direction and sample work</b></p>
+<p>Placeholder description: showcase programme photography, participant interactions, faculty engagement, learning environments and event documentation. Explain the approach to composition, perspective, lighting and visual storytelling.</p>
+</div>
+<div class="slideshow" data-slideshow data-images="">
+<div class="slide-empty">PHOTOGRAPHY SAMPLE WORK<br><br>Add image URLs to activate the slideshow.</div>
+<div class="slide-dots"></div>
+<div class="slide-controls"><button type="button" data-prev aria-label="Previous image">‹</button><span class="slide-count">No images added</span><button type="button" data-next aria-label="Next image">›</button></div>
+<button class="slide-play" type="button" data-play disabled>Autoplay unavailable</button>
+</div>
+</div>
+</section>
+
+<section class="creative-work">
+<div class="creative-row">
+<div class="creative-copy">
+<h3 class="creative-heading">02 · AI-Generated Conceptual Content</h3>
+<p><b>AI-assisted creative exploration</b></p>
+<p>Placeholder description: present AI-generated visual concepts developed to communicate programme themes, leadership ideas and abstract learning outcomes. Include the creative brief, concept development and final visual applications.</p>
+</div>
+<div class="slideshow portrait" data-slideshow data-images="
+https://drive.google.com/thumbnail?id=10nv9IYa_JBiDqJ65Ke4vjRl3OPAiGrRQ&amp;sz=w1200|
+https://drive.google.com/thumbnail?id=11HbZ-6_gbFurYDQnEgYhMAJ-_PzD1xUZ&amp;sz=w1200|
+https://drive.google.com/thumbnail?id=11eNtUlzvh_tfvh6-ODLvSsU9zoJyUxvd&amp;sz=w1200|
+https://drive.google.com/thumbnail?id=14DI9_fn2-hDUL5ZEseMdMCfBOPQ9YIhO&amp;sz=w1200|
+https://drive.google.com/thumbnail?id=1CowlxKIe54neVmvVGZ4pHnLOsoPFtWB-&amp;sz=w1200|
+https://drive.google.com/thumbnail?id=1F1_MOGFJkgX0BlvBGjKfJ3iRoOboetLS&amp;sz=w1200|
+https://drive.google.com/thumbnail?id=1JQeHRS3oBruq8xlqv_gwoZdyjRrWxAaO&amp;sz=w1200|
+https://drive.google.com/thumbnail?id=1KMn7yvD4BLbwTYwazaTU8rOMYl5wrzEF&amp;sz=w1200|
+https://drive.google.com/thumbnail?id=1THB6kwXryIyUKED1yW8OwSSs6gEde-ZE&amp;sz=w1200|
+https://drive.google.com/thumbnail?id=1_iwBUBBMRZynPFqnui8YvehkrKIBjAXe&amp;sz=w1200|
+https://drive.google.com/thumbnail?id=1a-pn8z8uHBkWFuGsb8NWyc6FBBD5B5Hb&amp;sz=w1200|
+https://drive.google.com/thumbnail?id=1aNe3iHTa0YuH__u-AM9k6g3FMjMwUg3K&amp;sz=w1200|
+https://drive.google.com/thumbnail?id=1bIohVKif4_Y4VLECB1kfY1HXPzy5KjUw&amp;sz=w1200|
+https://drive.google.com/thumbnail?id=1cwAo_55sIxXMSsM1JUUYZDXRsJe8opnE&amp;sz=w1200|
+https://drive.google.com/thumbnail?id=1fav_6n2wXo3JnXxce9XeVatbCT5H6TD_&amp;sz=w1200|
+https://drive.google.com/thumbnail?id=1gwB7BYCmuHDitltya6eZJb0uQifeD0f9&amp;sz=w1200|
+https://drive.google.com/thumbnail?id=1oVah1355D2h0cltx9lEMiXdv7kUufEe6&amp;sz=w1200|
+https://drive.google.com/thumbnail?id=1svA_UbtKJDG0R5rarzO188lcmuukOKEb&amp;sz=w1200|
+https://drive.google.com/thumbnail?id=1tsmCz_HoXpW_yJgdB5hvm66AKQKshtEy&amp;sz=w1200|
+https://drive.google.com/thumbnail?id=1yhMSBeljFLQ64COf4BNitcRZm2TJ_5T-&amp;sz=w1200">
+<div class="slide-empty">AI-GENERATED CONCEPTUAL WORK</div>
+<div class="slide-dots"></div>
+<div class="slide-controls"><button type="button" data-prev aria-label="Previous image">‹</button><span class="slide-count">Loading images...</span><button type="button" data-next aria-label="Next image">›</button></div>
+<button class="slide-play" type="button" data-play>Pause slideshow</button>
+</div>
+</div>
+</section>
+
+<section class="creative-work">
+<div class="creative-row">
+<div class="creative-copy">
+<h3 class="creative-heading">03 · B-roll Shots</h3>
+<p><b>Video production and visual storytelling</b></p>
+<p>Placeholder description: showcase supporting footage captured across programme environments, participant interactions, learning activities, speakers, venue details and cinematic sequences used in campaign edits.</p>
+</div>
+<div class="broll-frame" data-broll data-video="">
+<div class="broll-placeholder">B-ROLL VIDEO SHOWCASE<br><br>Add a YouTube embed URL or Google Drive preview URL in the data-video attribute.</div>
+</div>
+</div>
+</section>
+
+</div>
+</details>
+</section>
+
+<div class="case" style="margin-top:8px">
+<div class="section">
+<h3 class="section-title">Production &amp; team systems</h3>
+<div class="grid">
+<article class="card"><div class="visual">WORKFLOW / ASSET MANAGEMENT EXAMPLE</div><div class="card-body"><h3>More consistent production</h3><p>Introduced clearer standards, templates, review points and workflow practices to reduce repeat corrections and improve coordination.</p></div></article>
+<article class="card"><div class="visual">TEAM / EQUIPMENT / BTS IMAGE</div><div class="card-body"><h3>Guidance with creative autonomy</h3><p>Guide three associates and coordinate vendors, with an emphasis on clear expectations, quality and ownership.</p></div></article>
+</div>
+</div>
+
+<div class="section">
+<h3 class="section-title">Observed impact</h3>
+<div class="impact-grid">
+<article class="impact-card"><strong>30%</strong><b>Turnaround-time improvement</b><p>Reported reduction associated with AI-assisted research, scripting, content, transcription and workflow optimisation. Confirm the measurement basis before publication.</p></article>
+<article class="impact-card"><strong>35%</strong><b>Revenue growth context</b><p>Overall REDC revenue increase discussed internally around the promotion period. Do not attribute the full increase to this work alone.</p></article>
+<article class="impact-card"><strong>6+</strong><b>Programme identities</b><p>Use the programme showcases to demonstrate differentiated positioning and campaign materials.</p></article>
+</div>
+<p class="footnote">Other observed outcomes include fewer repetitive corrections, fewer revisions, improved coordination, more consistent visual communication and clearer expectations for associates. Add direct evidence where possible.</p>
+</div>
+
+<div class="note"><b>My contribution</b><p>Creative direction and review · participant testimonial system · programme positioning · brand and production guidelines · AI-assisted workflows · associate guidance · faculty and stakeholder collaboration · selected flagship programme shoots.</p></div>
+</div>
+</div>
+
+<script>
+(function(){
+const root=document.getElementById("redc");
+if(!root)return;
+
+root.querySelectorAll("[data-slideshow]").forEach(function(slider){
+const urls=(slider.dataset.images||"").split("|").map(function(url){return url.trim()}).filter(Boolean);
+const empty=slider.querySelector(".slide-empty");
+const dots=slider.querySelector(".slide-dots");
+const count=slider.querySelector(".slide-count");
+const prev=slider.querySelector("[data-prev]");
+const next=slider.querySelector("[data-next]");
+const play=slider.querySelector("[data-play]");
+
+if(!urls.length){prev.disabled=true;next.disabled=true;play.disabled=true;return}
+
+let index=0,timer=null,playing=false;
+const img=document.createElement("img");
+img.alt="Creative production sample";
+img.loading="lazy";
+slider.insertBefore(img,empty);
+empty.style.display="none";
+
+const dotButtons=urls.map(function(_,i){
+const dot=document.createElement("button");
+dot.type="button";
+dot.setAttribute("aria-label","Show image "+(i+1));
+dot.addEventListener("click",function(){show(i)});
+dots.appendChild(dot);
+return dot;
+});
+
+function show(i){
+index=(i+urls.length)%urls.length;
+img.src=urls[index];
+count.textContent=(index+1)+" / "+urls.length;
+dotButtons.forEach(function(dot,n){dot.classList.toggle("active",n===index)});
+}
+function stop(){
+if(timer){clearInterval(timer);timer=null}
+playing=false;
+play.textContent="Play slideshow";
+}
+function start(){
+if(urls.length<2)return;
+if(timer)clearInterval(timer);
+playing=true;
+play.textContent="Pause slideshow";
+timer=setInterval(function(){show(index+1)},4000);
+}
+prev.addEventListener("click",function(){show(index-1)});
+next.addEventListener("click",function(){show(index+1)});
+play.addEventListener("click",function(){if(playing){stop()}else{start()}});
+slider.addEventListener("mouseenter",function(){if(playing&&timer){clearInterval(timer);timer=null}});
+slider.addEventListener("mouseleave",function(){
+if(playing&&!timer&&urls.length>1){timer=setInterval(function(){show(index+1)},4000)}
+});
+show(0);
+if(urls.length>1){start()}else{
+play.textContent="One image";
+play.disabled=true;
+prev.disabled=true;
+next.disabled=true;
+}
+});
+
+root.querySelectorAll("[data-broll]").forEach(function(frame){
+const url=(frame.dataset.video||"").trim();
+if(!url)return;
+const iframe=document.createElement("iframe");
+iframe.src=url;
+iframe.title="Creative production B-roll video";
+iframe.loading="lazy";
+iframe.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen";
+iframe.allowFullscreen=true;
+frame.replaceChildren(iframe);
+});
+})();
+</script>
 </body>
 </html>
